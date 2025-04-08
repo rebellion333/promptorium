@@ -2,22 +2,60 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Promptorium</title>
-  <link rel="stylesheet" href="styles/main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Promptorium - Biblioteca de Prompts</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
 </head>
 <body>
+  <header>
+    <img src="img/logo.png" alt="Logo Promptorium" class="logo" />
+    <h1>Promptorium</h1>
+    <p class="slogan">Donde la sabiduría antigua encuentra la inteligencia artificial</p>
+  </header>
+
   <nav>
     <ul>
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="generator.html">Generador de Prompts</a></li>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="generador.html">Generador de Prompts</a></li>
       <li><a href="score.html">Promptorium Score</a></li>
-      <li><a href="assistant.html">IA Asistente</a></li>
+      <li><a href="asistente.html">IA Asistente</a></li>
+      <li><a href="https://github.com/rebellion333/promptorium" target="_blank">Repositorio</a></li>
     </ul>
   </nav>
+
   <main>
-    <h1>Bienvenido a Promptorium</h1>
-    <p>Explorá y creá los mejores prompts de IA, puntuados por la comunidad.</p>
+    <section>
+      <h2>¿Qué es Promptorium?</h2>
+      <p>Una biblioteca viva de conocimientos para domar la IA. Comparte, aprende y mejora tus prompts con una comunidad apasionada y ética.</p>
+    </section>
+
+    <section>
+      <h2>Explorá el conocimiento</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Generador de Prompts</h3>
+          <p>Creá prompts personalizados para las IA más populares.</p>
+          <a href="generador.html" class="btn">Probar</a>
+        </div>
+        <div class="card">
+          <h3>Promptorium Score</h3>
+          <p>Filtrá los mejores prompts según su rendimiento y claridad.</p>
+          <a href="score.html" class="btn">Explorar</a>
+        </div>
+        <div class="card">
+          <h3>IA Asistente</h3>
+          <p>Un asistente con IA para ayudarte a perfeccionar tus ideas.</p>
+          <a href="asistente.html" class="btn">Hablar</a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <p>&copy; 2025 Promptorium. Proyecto Open Source con ❤️ por Martin & Prompti.</p>
+  </footer>
+
+  <script src="scripts/main.js"></script>
 </body>
 </html>
