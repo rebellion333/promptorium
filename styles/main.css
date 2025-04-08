@@ -1,0 +1,7 @@
+
+body { font-family: sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
+nav ul { list-style: none; display: flex; gap: 1rem; background: #222; padding: 1rem; }
+nav a { color: white; text-decoration: none; }
+main { padding: 2rem; }
+textarea { width: 100%; margin-top: 1rem; }
+button { margin-top: 1rem; padding: 0.5rem 1rem; }

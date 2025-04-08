@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Promptorium</title>
+  <title>Generador de Prompts</title>
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
@@ -16,8 +16,17 @@
     </ul>
   </nav>
   <main>
-    <h1>Bienvenido a Promptorium</h1>
-    <p>Explorá y creá los mejores prompts de IA, puntuados por la comunidad.</p>
+    <h1>Generador de Prompts</h1>
+    <label for="ai">Seleccioná la IA:</label>
+    <select id="ai">
+      <option>ChatGPT</option>
+      <option>Midjourney</option>
+      <option>Claude</option>
+    </select>
+    <textarea placeholder="¿Qué querés que haga la IA?" rows="5"></textarea>
+    <button onclick="generatePrompt()">Generar Prompt</button>
+    <div id="output"></div>
   </main>
+  <script src="scripts/main.js"></script>
 </body>
 </html>
