@@ -1,38 +1,55 @@
 // scripts/generador.js
 
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("prompt-form");
-    const output = document.getElementById("prompt-output");
-    const promptText = document.getElementById("prompt-text");
-    const copyBtn = document.getElementById("copy-btn");
-    const copyMsg = document.getElementById("copy-msg");
-  
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-  
-      const objetivo = document.getElementById("objetivo").value.trim();
-      const modelo = document.getElementById("modelo").value;
-      const tono = document.getElementById("tono").value;
-      const restricciones = document.getElementById("restricciones").value.trim();
-  
-      const prompt = `Generá un prompt para ${modelo} que cumpla con el objetivo: "${objetivo}"` +
-        (tono ? `, utilizando un tono ${tono}` : "") +
-        (restricciones ? `, evitando: ${restricciones}` : ".");
-  
-      promptText.textContent = prompt;
-      output.style.display = "block";
-      copyBtn.style.display = "inline-block";
-      copyMsg.textContent = "";
-    });
-  
-    copyBtn.addEventListener("click", () => {
-      const text = promptText.textContent;
-      navigator.clipboard.writeText(text).then(() => {
-        copyMsg.textContent = "✅ ¡Prompt copiado al portapapeles!";
-        setTimeout(() => {
-          copyMsg.textContent = "";
-        }, 2500);
+async function cargarModelos() {
+    try {
+      const response = await fetch('assets/models.json');
+      const data = await response.json();
+      const select = document.getElementById('modelo');
+      data.forEach(model => {
+        const option = document.createElement('option');
+        option.value = model.nombre;
+        option.textContent = model.nombre;
+        select.appendChild(option);
       });
-    });
+    } catch (error) {
+      console.error('Error al cargar modelos:', error);
+    }
+  }
+  
+  function generarPrompt() {
+    const modelo = document.getElementById('modelo').value;
+    const objetivo = document.getElementById('objetivo').value;
+    const salida = document.getElementById('resultado');
+  
+    fetch('assets/models.json')
+      .then(res => res.json())
+      .then(data => {
+        const modeloData = data.find(m => m.nombre === modelo);
+        if (!modeloData) return;
+  
+        const promptGenerado = `${modeloData.formato.replace('{objetivo}', objetivo)}\n\nTips: ${modeloData.tips.join(' | ')}`;
+  
+        salida.textContent = promptGenerado;
+  
+        document.getElementById('copiar-btn').style.display = 'inline-block';
+      });
+  }
+  
+  function copiarPrompt() {
+    const resultado = document.getElementById('resultado').textContent;
+    navigator.clipboard.writeText(resultado)
+      .then(() => {
+        const mensaje = document.createElement('div');
+        mensaje.textContent = '✅ ¡Prompt copiado al portapapeles!';
+        mensaje.className = 'mensaje-copiado';
+        document.body.appendChild(mensaje);
+        setTimeout(() => mensaje.remove(), 2500);
+      });
+  }
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    cargarModelos();
+    document.getElementById('generar-btn').addEventListener('click', generarPrompt);
+    document.getElementById('copiar-btn').addEventListener('click', copiarPrompt);
   });
   

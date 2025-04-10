@@ -1,0 +1,44 @@
+[
+  {
+    "name": "GPT-4",
+    "description": "Modelo de lenguaje multimodal desarrollado por OpenAI.",
+    "strengths": [
+      "Comprensión contextual avanzada",
+      "Capacidad de razonamiento",
+      "Soporte multimodal (texto e imagen)"
+    ],
+    "prompt_tips": [
+      "Sé claro con la estructura y formato deseado.",
+      "Especificá si querés pasos, listas o un estilo particular.",
+      "Incluí contexto relevante pero conciso."
+    ]
+  },
+  {
+    "name": "Claude 3",
+    "description": "Modelo de IA de Anthropic con fuerte enfoque ético.",
+    "strengths": [
+      "Interpretación alineada con valores humanos",
+      "Explicaciones detalladas",
+      "Manejo natural de conversaciones largas"
+    ],
+    "prompt_tips": [
+      "Formulá preguntas abiertas y contextuales.",
+      "Pedí ejemplos o analogías para mayor claridad.",
+      "Mantené un tono conversacional y colaborativo."
+    ]
+  },
+  {
+    "name": "Gemini Pro",
+    "description": "Modelo de lenguaje de Google con integración web y herramientas.",
+    "strengths": [
+      "Acceso a conocimientos actualizados",
+      "Integración con herramientas y APIs",
+      "Resolución de tareas complejas"
+    ],
+    "prompt_tips": [
+      "Instruí paso a paso la tarea o pregunta.",
+      "Especificá si debe usar herramientas externas o no.",
+      "Utilizá ejemplos para guiar su razonamiento."
+    ]
+  }
+]

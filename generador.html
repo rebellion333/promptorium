@@ -6,53 +6,33 @@
   <title>Generador de Prompts - Promptorium</title>
   <link rel="stylesheet" href="styles/style.css" />
   <link rel="stylesheet" href="styles/generador.css" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
 </head>
 <body>
   <header>
     <img src="img/logo.png" alt="Logo Promptorium" class="logo" />
     <h1>Generador de Prompts</h1>
-    <p class="slogan">Diseñá prompts útiles para IA con la ayuda del Promptorium</p>
+    <p class="slogan">Creá el prompt perfecto según el modelo que elijas</p>
   </header>
-
-  <nav>
-    <ul>
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="generador.html">Generador de Prompts</a></li>
-      <li><a href="score.html">Promptorium Score</a></li>
-      <li><a href="asistente.html">IA Asistente</a></li>
-      <li><a href="https://github.com/rebellion333/promptorium" target="_blank">Repositorio</a></li>
-    </ul>
-  </nav>
 
   <main>
     <section>
-      <form id="promptForm">
-        <label for="objetivo">¿Qué querés lograr con el prompt?</label>
-        <input type="text" id="objetivo" required />
+      <label for="modelo">Elegí una IA:</label>
+      <select id="modelo">
+        <option value="">Cargando modelos...</option>
+      </select>
 
-        <label for="modelo">¿Para qué modelo de IA es?</label>
-        <select id="modelo" required>
-          <option value="GPT-4">GPT-4</option>
-          <option value="Claude 3">Claude 3</option>
-          <option value="Gemini">Gemini</option>
-          <option value="LLaMA">LLaMA</option>
-          <option value="Otro">Otro</option>
-        </select>
+      <label for="idea">¿Qué querés que haga la IA?</label>
+      <textarea id="idea" placeholder="Escribí tu idea aquí..."></textarea>
 
-        <label for="tono">¿Qué tono querés? (Ej: Profesional, Creativo, Amigable)</label>
-        <input type="text" id="tono" />
+      <button id="generar">Generar Prompt</button>
+      <button id="copiar">📋 Copiar al portapapeles</button>
+      <p id="mensaje-copiado" class="mensaje-copiado" style="display:none;">✅ ¡Prompt copiado al portapapeles!</p>
+    </section>
 
-        <label for="restricciones">¿Hay restricciones o cosas que debe evitar?</label>
-        <textarea id="restricciones" rows="3"></textarea>
-
-        <button type="submit">Generar Prompt</button>
-      </form>
-
-      <div id="outputSection">
-        <h2>Prompt generado:</h2>
-        <div id="outputPrompt"></div>
-      </div>
+    <section id="resultado">
+      <h2>Prompt Generado</h2>
+      <pre id="prompt-generado"></pre>
+      <div id="tips"></div>
     </section>
   </main>
 
