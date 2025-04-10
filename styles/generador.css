@@ -1,0 +1,62 @@
+/* styles/generador.css */
+
+form {
+    background-color: #f7f3e9;
+    border: 1px solid #d4cfc4;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #3a2e25;
+  }
+  
+  input[type="text"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+  }
+  
+  button {
+    background-color: #8d775f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    margin-top: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  button:hover {
+    background-color: #715f4d;
+  }
+  
+  #outputSection {
+    margin-top: 30px;
+    background-color: #fff9f0;
+    padding: 20px;
+    border: 1px dashed #c7b299;
+    border-radius: 10px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+  }
+  
+  #outputPrompt {
+    white-space: pre-wrap;
+    font-family: "Courier New", Courier, monospace;
+    color: #2e241d;
+  }
+  

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generador de Prompts - Promptorium</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="styles/generador.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+</head>
+<body>
+  <header>
+    <img src="img/logo.png" alt="Logo Promptorium" class="logo" />
+    <h1>Generador de Prompts</h1>
+    <p class="slogan">Diseñá prompts útiles para IA con la ayuda del Promptorium</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="generador.html">Generador de Prompts</a></li>
+      <li><a href="score.html">Promptorium Score</a></li>
+      <li><a href="asistente.html">IA Asistente</a></li>
+      <li><a href="https://github.com/rebellion333/promptorium" target="_blank">Repositorio</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section>
+      <form id="promptForm">
+        <label for="objetivo">¿Qué querés lograr con el prompt?</label>
+        <input type="text" id="objetivo" required />
+
+        <label for="modelo">¿Para qué modelo de IA es?</label>
+        <select id="modelo" required>
+          <option value="GPT-4">GPT-4</option>
+          <option value="Claude 3">Claude 3</option>
+          <option value="Gemini">Gemini</option>
+          <option value="LLaMA">LLaMA</option>
+          <option value="Otro">Otro</option>
+        </select>
+
+        <label for="tono">¿Qué tono querés? (Ej: Profesional, Creativo, Amigable)</label>
+        <input type="text" id="tono" />
+
+        <label for="restricciones">¿Hay restricciones o cosas que debe evitar?</label>
+        <textarea id="restricciones" rows="3"></textarea>
+
+        <button type="submit">Generar Prompt</button>
+      </form>
+
+      <div id="outputSection">
+        <h2>Prompt generado:</h2>
+        <div id="outputPrompt"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Promptorium. Proyecto Open Source con ❤️ por Martin & Prompti.</p>
+  </footer>
+
+  <script src="scripts/generador.js"></script>
+</body>
+</html>
