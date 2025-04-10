@@ -2,37 +2,51 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Generador de Prompts - Promptorium</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Generador de Prompts | Promptorium</title>
   <link rel="stylesheet" href="styles/style.css" />
   <link rel="stylesheet" href="styles/generador.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
 </head>
 <body>
   <header>
-    <img src="img/logo.png" alt="Logo Promptorium" class="logo" />
-    <h1>Generador de Prompts</h1>
-    <p class="slogan">Creá el prompt perfecto según el modelo que elijas</p>
+    <a href="index.html">
+      <img src="img/logo.png" alt="Logo Promptorium" class="logo" />
+    </a>
+    <h1>Promptorium</h1>
+    <p class="slogan">Donde la sabiduría antigua encuentra la inteligencia artificial</p>
   </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="generador.html" class="active">Generador de Prompts</a></li>
+      <li><a href="score.html">Promptorium Score</a></li>
+      <li><a href="asistente.html">IA Asistente</a></li>
+      <li><a href="https://github.com/rebellion333/promptorium" target="_blank">Repositorio</a></li>
+    </ul>
+  </nav>
 
   <main>
     <section>
-      <label for="modelo">Elegí una IA:</label>
+      <h2>🛠 Generador de Prompts</h2>
+      <p>Seleccioná una IA generativa y escribí tu idea. Promptorium adaptará tu texto para lograr una mejor interacción con el modelo elegido.</p>
+
+      <label for="modelo">Elegí el modelo de IA:</label>
       <select id="modelo">
-        <option value="">Cargando modelos...</option>
+        <option>Cargando modelos...</option>
       </select>
 
-      <label for="idea">¿Qué querés que haga la IA?</label>
-      <textarea id="idea" placeholder="Escribí tu idea aquí..."></textarea>
+      <label for="inputPrompt">Escribí tu idea o mensaje:</label>
+      <textarea id="inputPrompt" rows="4" placeholder="Escribí lo que querés que haga la IA..."></textarea>
 
-      <button id="generar">Generar Prompt</button>
-      <button id="copiar">📋 Copiar al portapapeles</button>
-      <p id="mensaje-copiado" class="mensaje-copiado" style="display:none;">✅ ¡Prompt copiado al portapapeles!</p>
-    </section>
+      <button id="generarBtn">✨ Generar Prompt</button>
 
-    <section id="resultado">
-      <h2>Prompt Generado</h2>
-      <pre id="prompt-generado"></pre>
-      <div id="tips"></div>
+      <label for="outputPrompt">Prompt adaptado:</label>
+      <textarea id="outputPrompt" rows="4" readonly></textarea>
+
+      <button id="copiarBtn">📋 Copiar Prompt</button>
+      <span id="mensajeCopia" style="display: none; color: green;">✅ ¡Prompt copiado al portapapeles!</span>
     </section>
   </main>
 

@@ -1,44 +1,32 @@
 [
   {
-    "name": "GPT-4",
-    "description": "Modelo de lenguaje multimodal desarrollado por OpenAI.",
-    "strengths": [
-      "Comprensión contextual avanzada",
-      "Capacidad de razonamiento",
-      "Soporte multimodal (texto e imagen)"
+    "nombre": "GPT-4",
+    "prefix": "Actuá como un experto en IA que redacta prompts efectivos para GPT-4.",
+    "tips": [
+      "Sé específico en el estilo, formato y detalles esperados.",
+      "Usá lenguaje claro, directo y con objetivos definidos.",
+      "Mantené un tono profesional o creativo según la tarea."
     ],
-    "prompt_tips": [
-      "Sé claro con la estructura y formato deseado.",
-      "Especificá si querés pasos, listas o un estilo particular.",
-      "Incluí contexto relevante pero conciso."
-    ]
+    "sufix": "Generá el mejor prompt posible con estas condiciones."
   },
   {
-    "name": "Claude 3",
-    "description": "Modelo de IA de Anthropic con fuerte enfoque ético.",
-    "strengths": [
-      "Interpretación alineada con valores humanos",
-      "Explicaciones detalladas",
-      "Manejo natural de conversaciones largas"
+    "nombre": "Claude 3",
+    "prefix": "Imaginá que estás hablando con Claude 3 de Anthropic.",
+    "tips": [
+      "Usá frases éticas, reflexivas y estructuradas.",
+      "Preferí claridad antes que informalidad.",
+      "Indicá ejemplos o comparaciones si es posible."
     ],
-    "prompt_tips": [
-      "Formulá preguntas abiertas y contextuales.",
-      "Pedí ejemplos o analogías para mayor claridad.",
-      "Mantené un tono conversacional y colaborativo."
-    ]
+    "sufix": "Generá un prompt que Claude entienda con máxima precisión."
   },
   {
-    "name": "Gemini Pro",
-    "description": "Modelo de lenguaje de Google con integración web y herramientas.",
-    "strengths": [
-      "Acceso a conocimientos actualizados",
-      "Integración con herramientas y APIs",
-      "Resolución de tareas complejas"
+    "nombre": "Gemini",
+    "prefix": "Creá un prompt dirigido al modelo Gemini de Google.",
+    "tips": [
+      "Aprovechá su comprensión multimodal si aplica.",
+      "Aclarar el dominio del tema: código, arte, educación, etc.",
+      "Pedí respuestas bien explicadas y justificaciones si es necesario."
     ],
-    "prompt_tips": [
-      "Instruí paso a paso la tarea o pregunta.",
-      "Especificá si debe usar herramientas externas o no.",
-      "Utilizá ejemplos para guiar su razonamiento."
-    ]
+    "sufix": "El objetivo es que Gemini te dé una respuesta completa y precisa."
   }
 ]

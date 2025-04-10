@@ -1,31 +1,83 @@
-#resultado {
-    margin-top: 2rem;
-    padding: 1rem;
-    background-color: #f5f5f5;
+/* styles/generador.css */
+
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fffdf6;
+    border: 1px solid #d7c6aa;
     border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   }
   
-  #prompt-generado {
-    white-space: pre-wrap;
-    background-color: #fff;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+  h2 {
+    color: #6e573b;
+    font-family: 'Georgia', serif;
     margin-bottom: 1rem;
-    font-family: 'Courier New', monospace;
   }
   
-  #tips {
+  label {
+    display: block;
     margin-top: 1rem;
-    padding: 1rem;
-    background-color: #e6f2ff;
-    border-left: 4px solid #3399ff;
-    border-radius: 6px;
+    font-weight: bold;
   }
   
-  .mensaje-copiado {
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 0.3rem;
+    border: 1px solid #c4b69c;
+    border-radius: 5px;
+    font-family: 'Georgia', serif;
+    background-color: #fdfaf4;
+  }
+  
+  button {
+    margin-top: 1.5rem;
+    padding: 0.6rem 1.2rem;
+    background-color: #a38d64;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Georgia', serif;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #8b7754;
+  }
+  
+  #generatedPrompt {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 1px dashed #a38d64;
+    background-color: #fdfaf4;
+    border-radius: 5px;
+    white-space: pre-wrap;
+  }
+  
+  #copyBtn {
+    margin-top: 1rem;
+    display: none;
+    padding: 0.5rem 1rem;
+    background-color: #6e573b;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #copyBtn:hover {
+    background-color: #594530;
+  }
+  
+  #copyMessage {
     margin-top: 0.5rem;
     color: green;
     font-weight: bold;
+    display: none;
+    font-size: 0.9rem;
   }
   

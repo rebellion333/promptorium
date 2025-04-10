@@ -1,55 +1,60 @@
-// scripts/generador.js
-
-async function cargarModelos() {
-    try {
-      const response = await fetch('assets/models.json');
-      const data = await response.json();
-      const select = document.getElementById('modelo');
-      data.forEach(model => {
-        const option = document.createElement('option');
-        option.value = model.nombre;
-        option.textContent = model.nombre;
-        select.appendChild(option);
-      });
-    } catch (error) {
-      console.error('Error al cargar modelos:', error);
-    }
-  }
+document.addEventListener('DOMContentLoaded', () => {
+    const modelSelect = document.getElementById('modelo');
+    const inputPrompt = document.getElementById('inputPrompt');
+    const outputPrompt = document.getElementById('outputPrompt');
+    const generateBtn = document.getElementById('generarBtn');
+    const copyBtn = document.getElementById('copiarBtn');
+    const mensajeCopia = document.getElementById('mensajeCopia');
   
-  function generarPrompt() {
-    const modelo = document.getElementById('modelo').value;
-    const objetivo = document.getElementById('objetivo').value;
-    const salida = document.getElementById('resultado');
-  
+    // Cargar modelos desde JSON
     fetch('assets/models.json')
       .then(res => res.json())
       .then(data => {
-        const modeloData = data.find(m => m.nombre === modelo);
-        if (!modeloData) return;
-  
-        const promptGenerado = `${modeloData.formato.replace('{objetivo}', objetivo)}\n\nTips: ${modeloData.tips.join(' | ')}`;
-  
-        salida.textContent = promptGenerado;
-  
-        document.getElementById('copiar-btn').style.display = 'inline-block';
+        data.forEach(model => {
+          const option = document.createElement('option');
+          option.value = model.id;
+          option.textContent = model.name;
+          modelSelect.appendChild(option);
+        });
+      })
+      .catch(err => {
+        console.error('Error cargando los modelos:', err);
+        modelSelect.innerHTML = '<option>Error al cargar modelos</option>';
       });
-  }
   
-  function copiarPrompt() {
-    const resultado = document.getElementById('resultado').textContent;
-    navigator.clipboard.writeText(resultado)
-      .then(() => {
-        const mensaje = document.createElement('div');
-        mensaje.textContent = '✅ ¡Prompt copiado al portapapeles!';
-        mensaje.className = 'mensaje-copiado';
-        document.body.appendChild(mensaje);
-        setTimeout(() => mensaje.remove(), 2500);
-      });
-  }
+    // Generar prompt adaptado
+    generateBtn.addEventListener('click', () => {
+      const texto = inputPrompt.value.trim();
+      const modeloSeleccionado = modelSelect.value;
   
-  document.addEventListener('DOMContentLoaded', () => {
-    cargarModelos();
-    document.getElementById('generar-btn').addEventListener('click', generarPrompt);
-    document.getElementById('copiar-btn').addEventListener('click', copiarPrompt);
+      if (!texto || !modeloSeleccionado) {
+        outputPrompt.value = 'Por favor ingresá un prompt y seleccioná un modelo.';
+        return;
+      }
+  
+      fetch('assets/models.json')
+        .then(res => res.json())
+        .then(modelos => {
+          const modelo = modelos.find(m => m.id === modeloSeleccionado);
+  
+          if (!modelo) {
+            outputPrompt.value = 'Modelo no encontrado.';
+            return;
+          }
+  
+          const generado = `📌 Modelo seleccionado: ${modelo.name}\n\n${modelo.prefijo || ''}${texto}${modelo.sufijo || ''}`;
+          outputPrompt.value = generado;
+        });
+    });
+  
+    // Copiar al portapapeles
+    copyBtn.addEventListener('click', () => {
+      outputPrompt.select();
+      document.execCommand('copy');
+      mensajeCopia.style.display = 'inline';
+      setTimeout(() => {
+        mensajeCopia.style.display = 'none';
+      }, 2000);
+    });
   });
   
