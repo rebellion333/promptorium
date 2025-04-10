@@ -1,32 +1,19 @@
-[
-  {
-    "nombre": "GPT-4",
-    "prefix": "Actuá como un experto en IA que redacta prompts efectivos para GPT-4.",
-    "tips": [
-      "Sé específico en el estilo, formato y detalles esperados.",
-      "Usá lenguaje claro, directo y con objetivos definidos.",
-      "Mantené un tono profesional o creativo según la tarea."
-    ],
-    "sufix": "Generá el mejor prompt posible con estas condiciones."
-  },
-  {
-    "nombre": "Claude 3",
-    "prefix": "Imaginá que estás hablando con Claude 3 de Anthropic.",
-    "tips": [
-      "Usá frases éticas, reflexivas y estructuradas.",
-      "Preferí claridad antes que informalidad.",
-      "Indicá ejemplos o comparaciones si es posible."
-    ],
-    "sufix": "Generá un prompt que Claude entienda con máxima precisión."
-  },
-  {
-    "nombre": "Gemini",
-    "prefix": "Creá un prompt dirigido al modelo Gemini de Google.",
-    "tips": [
-      "Aprovechá su comprensión multimodal si aplica.",
-      "Aclarar el dominio del tema: código, arte, educación, etc.",
-      "Pedí respuestas bien explicadas y justificaciones si es necesario."
-    ],
-    "sufix": "El objetivo es que Gemini te dé una respuesta completa y precisa."
-  }
-]
+{
+  "models": [
+    {
+      "id": "gpt-4",
+      "nombre": "GPT-4",
+      "plantilla": "Usando GPT-4, generá una respuesta que cumpla con esta descripción: {descripcion}. Prestá atención al tono, claridad y profundidad técnica."
+    },
+    {
+      "id": "claude-3",
+      "nombre": "Claude 3",
+      "plantilla": "Con Claude 3, proporcioná una solución precisa y ética para este requerimiento: {descripcion}. Usá un lenguaje natural y fácil de entender."
+    },
+    {
+      "id": "mistral-7b",
+      "nombre": "Mistral 7B",
+      "plantilla": "Dado este objetivo: {descripcion}, generá una respuesta eficiente y concisa, ideal para correr en dispositivos locales usando Mistral 7B."
+    }
+  ]
+}

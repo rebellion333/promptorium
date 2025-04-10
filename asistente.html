@@ -1,16 +1,18 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IA Asistente - Promptorium</title>
-  <link rel="stylesheet" href="styles/style.css" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/asistente.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
   <header>
-    <img src="img/logo.png" alt="Logo Promptorium" class="logo" />
-    <h1>Promptorium</h1>
-    <p class="slogan">Donde la sabiduría antigua encuentra la inteligencia artificial</p>
+    <a href="index.html"><img src="img/logo.png" alt="Logo Promptorium" class="logo" /></a>
+    <h1>IA Asistente</h1>
+    <p class="slogan">Te ayudamos a perfeccionar tus ideas según cada IA</p>
   </header>
 
   <nav>
@@ -19,15 +21,28 @@
       <li><a href="generador.html">Generador de Prompts</a></li>
       <li><a href="score.html">Promptorium Score</a></li>
       <li><a href="#" class="active">IA Asistente</a></li>
-      <li><a href="assets/whitepaper.pdf" target="_blank">Whitepaper</a></li>
       <li><a href="https://github.com/rebellion333/promptorium" target="_blank">Repositorio</a></li>
     </ul>
   </nav>
 
   <main>
     <section>
-      <h2>Habla con el Asistente</h2>
-      <p>Pronto vas a poder conversar con un asistente que domina los mejores prompts. 🚧</p>
+      <h2>Asistente de Prompts</h2>
+      <p>Analizá tus prompts según la IA que querés usar. En futuras versiones esto será una IA entrenada con esta finalidad.</p>
+
+      <form id="asistente-form">
+        <label for="user-prompt">Ingresá tu prompt:</label>
+        <textarea id="user-prompt" rows="5" placeholder="Ej. Describí una escena cyberpunk con una detective y lluvia..." required></textarea>
+        <button type="submit" class="btn">🔍 Analizar</button>
+      </form>
+
+      <div id="asistente-output"></div>
+
+      <div id="asistente-feedback">
+        <p>¿Te fue útil esta sugerencia?</p>
+        <button>👍 Sí</button>
+        <button>👎 No</button>
+      </div>
     </section>
   </main>
 

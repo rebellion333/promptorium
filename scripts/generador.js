@@ -1,60 +1,63 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const modelSelect = document.getElementById('modelo');
-    const inputPrompt = document.getElementById('inputPrompt');
-    const outputPrompt = document.getElementById('outputPrompt');
-    const generateBtn = document.getElementById('generarBtn');
-    const copyBtn = document.getElementById('copiarBtn');
-    const mensajeCopia = document.getElementById('mensajeCopia');
-  
-    // Cargar modelos desde JSON
-    fetch('assets/models.json')
-      .then(res => res.json())
-      .then(data => {
-        data.forEach(model => {
-          const option = document.createElement('option');
-          option.value = model.id;
-          option.textContent = model.name;
-          modelSelect.appendChild(option);
-        });
-      })
-      .catch(err => {
-        console.error('Error cargando los modelos:', err);
-        modelSelect.innerHTML = '<option>Error al cargar modelos</option>';
-      });
-  
-    // Generar prompt adaptado
-    generateBtn.addEventListener('click', () => {
-      const texto = inputPrompt.value.trim();
-      const modeloSeleccionado = modelSelect.value;
-  
-      if (!texto || !modeloSeleccionado) {
-        outputPrompt.value = 'Por favor ingresá un prompt y seleccioná un modelo.';
-        return;
-      }
-  
-      fetch('assets/models.json')
-        .then(res => res.json())
-        .then(modelos => {
-          const modelo = modelos.find(m => m.id === modeloSeleccionado);
-  
-          if (!modelo) {
-            outputPrompt.value = 'Modelo no encontrado.';
-            return;
-          }
-  
-          const generado = `📌 Modelo seleccionado: ${modelo.name}\n\n${modelo.prefijo || ''}${texto}${modelo.sufijo || ''}`;
-          outputPrompt.value = generado;
-        });
+// scripts/generador.js
+
+const modelosGeneradorURL = 'assets/models.json';
+let modelosIA = [];
+
+async function cargarModelosGenerador() {
+  try {
+    const response = await fetch(modelosGeneradorURL);
+    modelosIA = await response.json();
+    const selector = document.getElementById('modelo');
+    modelosIA.forEach(modelo => {
+      const option = document.createElement('option');
+      option.value = modelo.nombre;
+      option.textContent = modelo.nombre;
+      selector.appendChild(option);
     });
-  
-    // Copiar al portapapeles
-    copyBtn.addEventListener('click', () => {
-      outputPrompt.select();
-      document.execCommand('copy');
-      mensajeCopia.style.display = 'inline';
-      setTimeout(() => {
-        mensajeCopia.style.display = 'none';
-      }, 2000);
-    });
+    document.getElementById('cargando').style.display = 'none';
+    document.getElementById('formulario-generador').style.display = 'block';
+  } catch (error) {
+    console.error('Error cargando modelos:', error);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', cargarModelosGenerador);
+
+document.getElementById('formulario-generador')?.addEventListener('submit', e => {
+  e.preventDefault();
+  const idea = document.getElementById('idea').value;
+  const modelo = document.getElementById('modelo').value;
+  const promptGenerado = generarPrompt(idea, modelo);
+
+  document.getElementById('resultado').innerHTML = `
+    <p><strong>Prompt generado:</strong></p>
+    <div class="prompt-generado">${promptGenerado}</div>
+    <button id="copiarPrompt">📋 Copiar Prompt</button>
+    <div class="feedback">
+      <span>¿Este prompt te sirvió?</span>
+      <button class="feedback-btn" onclick="feedbackGenerador(true)">👍</button>
+      <button class="feedback-btn" onclick="feedbackGenerador(false)">👎</button>
+    </div>
+  `;
+
+  document.getElementById('copiarPrompt').addEventListener('click', () => {
+    navigator.clipboard.writeText(promptGenerado)
+      .then(() => alert('✅ ¡Prompt copiado al portapapeles!'))
+      .catch(() => alert('❌ Error al copiar el prompt.'));
   });
-  
+});
+
+function generarPrompt(idea, modelo) {
+  const modeloInfo = modelosIA.find(m => m.nombre === modelo);
+  if (!modeloInfo) return `Prompt basado en: ${idea}`;
+
+  return `Usando ${modeloInfo.nombre}, con sus fortalezas en ${modeloInfo.fortalezas.join(", ")}, genera: ${idea}`;
+}
+
+function feedbackGenerador(util) {
+  if (util) {
+    alert('Gracias por tu feedback positivo 🙌');
+  } else {
+    alert('Gracias por tu feedback, lo tendremos en cuenta 👀');
+  }
+}

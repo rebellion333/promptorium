@@ -1,0 +1,43 @@
+/* styles/asistente.css */
+
+#asistente-output {
+    background-color: #f9f9f9;
+    padding: 1em;
+    border-radius: 10px;
+    margin-top: 1em;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  }
+  
+  textarea {
+    width: 100%;
+    padding: 0.8em;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: 1em;
+    resize: vertical;
+  }
+  
+  #asistente-feedback {
+    display: none;
+    margin-top: 1em;
+  }
+  
+  #asistente-feedback button {
+    margin-right: 1em;
+    padding: 0.5em 1em;
+    border: none;
+    background-color: #eee;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  #asistente-feedback button:hover {
+    background-color: #ddd;
+  }
+  
+  .error {
+    color: #a00;
+    font-weight: bold;
+  }
+  
